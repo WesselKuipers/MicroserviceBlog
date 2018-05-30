@@ -1,0 +1,27 @@
+.navigation {
+	border-bottom: 2px solid black;
+}
+
+nav > ul {
+	display: flex;
+	justify-content: space-between;
+	padding: 1.2em 3em;
+}
+
+nav > ul > li {
+	display: inline-block;
+}
+
+ul > ul > li {
+	display: inline-block;
+	margin-left: 2em;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+.pointer {
+	cursor: pointer;
+}

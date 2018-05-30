@@ -1,0 +1,12 @@
+.wrapper{
+	margin: 25px;
+	border-bottom: 2px solid black;
+}
+
+article .when {
+	margin-top: -20px;
+}
+
+article {
+	padding: 25px;
+}

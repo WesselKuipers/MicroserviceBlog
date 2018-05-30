@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-import Navigation from './Components/Navigation/Navigation';
-import Login from './Components/Login/Login';
-import ArticleList from './Components/ArticleList/ArticleList';
-import Article from './Components/ArticleList/Article';
+import Article from './Article';
 
 const art = {
   id: 1,
@@ -27,31 +23,58 @@ const author = {
   bio: 'een verveelde student die een micro service moet maken.'
 };
 
-class App extends Component {
+class ArticleList extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      articles : []
+    }
+  }
+
+  componentDidMount() {
+      //test
+      var arts = [art, art, art];
+      this.setState({articles: arts});
+    //Fetch all articles
+    /*
+    fetch('http://localhost:8081/')
+      .then(res => res.json())
+      .then( function(data){
+        var articles = [];
+        data.forEach(article => {
+          articles.push(article);
+        });
+        
+        this.setState({articles: articles}) 
+      })
+      .catch(function(err) {
+        // show error in developer console for debugging
+        console.error(err);
+      });
+    */
   }
 
   render() {
-    return (
-      <div>
-        <Router>
-          <div>
-            <Navigation  />
-            <Route path='/index' render={(props) => <ArticleList {...props} />} />
-            <Route path='/login' render={(props) => <Login {...props} />} />
-            <Route path='/article/:id' render={(props) => <Article {...props} 
-              date={art.date.toString()}
-              title={art.title}
-              authorID={art.authorID}
-              author={author}
-              content={art.content}
-              />} />
-          </div>
-        </Router>
-      </div>
+    return(
+        <div>
+        {
+            this.state.articles.map(article => {
+                return(
+                    <Article
+                        key={article.id}
+                        date={article.date.toString()}
+                        title={article.title}
+                        authorID={article.authorID}
+                        content={article.content}
+                        author={author}
+                    />
+                );
+            })
+        }
+        </div>
     );
   }
 }
 
-export default App;
+export default ArticleList;
