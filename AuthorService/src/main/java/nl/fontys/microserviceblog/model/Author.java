@@ -19,6 +19,7 @@ public class Author {
     private String name;
     private String email;
     private String password;
+    private String bio;
 
     public String getPassword() {
         return password;
@@ -58,5 +59,13 @@ public class Author {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }
