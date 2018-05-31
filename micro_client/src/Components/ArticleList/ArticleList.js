@@ -11,7 +11,9 @@ class ArticleList extends Component {
       articles : [ ]
     }
 
-    fetch('http://localhost:8080/blogs')
+    fetch('http://localhost:8080/blogs', {
+        headers: { "Content-Security-Policy": "script-src 'self' http://localhost:8080/" }
+    })
       .then(res => res.json())
       .then( function(data){
         var articles = [];

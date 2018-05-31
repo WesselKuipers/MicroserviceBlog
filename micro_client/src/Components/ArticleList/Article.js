@@ -22,12 +22,16 @@ class Article extends Component {
     }
     
     //Fetch article by id
-    fetch('http://localhost:8080/blogs/' + this.id)
+    fetch('http://localhost:8080/blogs/' + this.id, {
+        headers: { "Content-Security-Policy": "script-src 'self' http://localhost:8080/" }
+    })
       .then(res => res.json())
       .then( function(data){
           this.setState({article: data});
 
-          fetch('http://localhost:8080/authors/' + data.authorId)
+          fetch('http://localhost:8080/authors/' + data.authorId, {
+              headers: { "Content-Security-Policy": "script-src 'self' http://localhost:8080/" }
+          })
             .then(res => res.json())
             .then( function(data){
                 this.setState({author: data});
@@ -57,7 +61,6 @@ class Article extends Component {
   }
 
   render() {
-    console.log( this.state );
     var content;
     if(!this.state.article || !this.state.author)
     {

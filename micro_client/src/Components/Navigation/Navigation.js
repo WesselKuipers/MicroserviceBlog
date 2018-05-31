@@ -14,15 +14,16 @@ class Navigation extends Component {
 			<nav className='w-100 bg-blue h3 navigation'>
 				<ul>
 					<li><Link to='/index'>Home</Link></li>
+					{this.state.loggedIn ? <li><Link to='/createArticle'>Create Article</Link></li> : null}
 					{
 						this.state.loggedIn ?
 						<ul>
-						<li><Link to='/Articles'>Articles</Link></li>
+						<li><Link to='/login'>Logout</Link></li>
 						</ul> :
 						<ul>
 							<li><Link to='/login'>Login</Link></li>
 						</ul>
-				}
+					}
 				</ul>
 			</nav>
 		);

@@ -14,7 +14,7 @@ class Login extends Component {
     event.preventDefault();
     let credentials = {username: this.state.username, password: this.state.password}
     
-    fetch('/authentication', {
+    fetch('http://localhost:8080/authors/authenticate', {
       method: 'POST',
       headers: new Headers({
         'Content-Type': 'application/json'
@@ -31,6 +31,7 @@ class Login extends Component {
     .then(tokenResponse => {
       localStorage.setItem('id_token', tokenResponse.token);
       localStorage.setItem('token_username', tokenResponse.username);
+      localStorage.setItem('authorId', tokenResponse.authorId);
 
       this.setState({loggedIn: true, error: false});
       
