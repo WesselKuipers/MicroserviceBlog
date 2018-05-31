@@ -2,16 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './Article.css';
 
-import About from './About';
-
-function Thumbnail(props) {
-  if (props.thumbnail) {
-    return <Link to={'/article/'+props.articleId}>Read more...</Link>;
-  }
-  return <About name={props.author.name} bio={props.author.bio} />;
-}
-
-class Article extends Component {
+class CreateArticle extends Component {
   constructor(props) {
     super(props);
 
@@ -77,12 +68,11 @@ class Article extends Component {
             <article>
                 <h1>{this.props.title}</h1>
                 <p className="when">Posted by {this.state.author.name} on {new Date(this.state.article.creationDate).toString()}</p>
-                <div dangerouslySetInnerHTML={{__html: content}} />
-                <Thumbnail articleId={this.id} thumbnail={this.state.thumbnail} author={ this.state.author }/>      
+                <div dangerouslySetInnerHTML={{__html: content}} />     
             </article>
         </div>
     );
   }
 }
 
-export default Article;
+export default CreateArticle;
