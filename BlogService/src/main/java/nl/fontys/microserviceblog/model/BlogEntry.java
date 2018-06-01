@@ -17,6 +17,8 @@ public class BlogEntry {
     private Date creationDate;
 
     private String title;
+
+    @Lob
     private String content;
 
     public String getContent() {
